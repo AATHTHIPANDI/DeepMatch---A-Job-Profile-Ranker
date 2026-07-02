@@ -1,0 +1,9 @@
+streamlit>=1.35.0
+pandas
+pydantic>=2.0
+groq>=1.0
+pymupdf
+python-docx
+python-dotenv
+sentence-transformers
+numpy

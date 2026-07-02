@@ -1,0 +1,739 @@
+{
+  "jd_intent": {
+    "role_title": "Senior Backend Engineer",
+    "seniority_level": "Senior",
+    "domain": "Backend",
+    "must_have_skills": [
+      "Python",
+      "PostgreSQL",
+      "Django",
+      "FastAPI",
+      "SQL"
+    ],
+    "nice_to_have_skills": [
+      "Docker",
+      "AWS"
+    ],
+    "implied_soft_skills": [
+      "Collaboration",
+      "High ownership",
+      "Adaptability"
+    ],
+    "min_years_experience": 5,
+    "summary": "We are seeking a Senior Backend Engineer to join our core ledger team, responsible for building, optimizing, and maintaining secure backend APIs for financial transactions, with expertise in Python, PostgreSQL, and a strong ownership mindset."
+  },
+  "shortlist": [
+    {
+      "candidate_id": "cand-001",
+      "name": "Alex Strong (Strong Fit)",
+      "overall_score": 92.64,
+      "sub_scores": {
+        "semantic_score": 79.48,
+        "skills_score": 96.0,
+        "experience_score": 100.0,
+        "trajectory_score": 100.0
+      },
+      "rationale": {
+        "overall_rank_summary": "Alex Strong scored highly due to their extensive experience in backend engineering, strong skill alignment with the job description, and a steady growth trajectory, making them a strong fit for the Senior Backend Engineer role. They rank highly relative to the JD requirements, with a minor concern regarding average tenure.",
+        "strengths": [
+          "Demonstrated PostgreSQL optimization capability by reducing transactional API latency by 45% at FintechScale.",
+          "Developed REST APIs using Python and Django, and implemented Docker containerization for core APIs at PayTech Solutions.",
+          "Showcased leadership skills by mentoring 3 junior developers and owning end-to-end ledger services at FintechScale.",
+          "Successfully migrated services to AWS ECS, utilizing AWS and Docker skills."
+        ],
+        "gaps_and_risks": [
+          "Lacks direct experience with FastAPI, although has Django experience which shares some similarities and could be transferable."
+        ],
+        "concerns_flags": [
+          "Average tenure of 3.12 years is slightly below the expected average for a senior role, indicating potential job hopping, but overall tenure of 6.25 years and steady growth trajectory mitigate this concern."
+        ]
+      },
+      "candidate_profile_snapshot": {
+        "candidate_id": "cand-001",
+        "name": "Alex Strong (Strong Fit)",
+        "contact": {
+          "email": "alex.strong@example.com",
+          "phone": "555-0101"
+        },
+        "summary": "Senior Backend Engineer with 6+ years of experience designing robust API services in Python. Passionate about database optimization and fintech ledger consistency.",
+        "explicit_skills": [
+          "Python",
+          "Django",
+          "PostgreSQL",
+          "Docker",
+          "AWS",
+          "SQL",
+          "Git",
+          "REST APIs"
+        ],
+        "inferred_skills": [
+          "containerization",
+          "mentoring",
+          "team leadership",
+          "cloud migration",
+          "database optimization"
+        ],
+        "experience": [
+          {
+            "title": "Senior Software Engineer",
+            "company": "FintechScale",
+            "start_date": "Jan 2023",
+            "end_date": "Present",
+            "tenure_years": 3.5,
+            "description": "Led backend ledger redesign. Optimized PostgreSQL indexing and query execution plans, reducing transactional API latency by 45%. Mentored 3 junior developers and owned end-to-end ledger services.",
+            "inferred_skills": [
+              "team leadership",
+              "mentoring"
+            ],
+            "growth_signals": [
+              "led backend ledger redesign",
+              "mentored junior developers"
+            ],
+            "scope_of_ownership": "end-to-end ledger services",
+            "achievement_language": "optimized, reducing latency by 45%",
+            "is_relevant": true
+          },
+          {
+            "title": "Software Engineer II",
+            "company": "PayTech Solutions",
+            "start_date": "Mar 2020",
+            "end_date": "Dec 2022",
+            "tenure_years": 2.75,
+            "description": "Developed REST APIs using Python and Django. Implemented Docker containerization for core APIs and migrated services to AWS ECS.",
+            "inferred_skills": [
+              "containerization",
+              "cloud migration"
+            ],
+            "growth_signals": [
+              "implemented Docker containerization",
+              "migrated services to AWS ECS"
+            ],
+            "scope_of_ownership": "core APIs",
+            "achievement_language": "developed, implemented, migrated",
+            "is_relevant": true
+          }
+        ],
+        "behavioral_summary": "The candidate demonstrates strong technical leadership and ownership skills, with a focus on optimizing database performance and leading the development of robust API services. They show a consistent ability to mentor junior developers and drive technical growth.",
+        "overall_tenure_years": 6.25,
+        "avg_tenure_years": 3.12,
+        "growth_trajectory": "steady promotion",
+        "platform_activity": {
+          "github_commits_past_year": 180,
+          "github_repo_relevance": 0.95,
+          "linkedin_activity_recency": "active",
+          "stackoverflow_reputation": 1200
+        }
+      }
+    },
+    {
+      "candidate_id": "cand-006",
+      "name": "Morgan Degraded (Graceful Degradation Case)",
+      "overall_score": 85.24,
+      "sub_scores": {
+        "semantic_score": 80.8,
+        "skills_score": 70.0,
+        "experience_score": 100.0,
+        "trajectory_score": 100.0
+      },
+      "rationale": {
+        "overall_rank_summary": "Morgan Degraded scored highly due to their 5.34 years of experience as a Senior API Engineer at LedgerLine, aligning with the Senior Backend Engineer role's requirements, but lacks direct experience with Django, a must-have skill.",
+        "strengths": [
+          "Demonstrated FastAPI capability by owning ledger API services at LedgerLine.",
+          "Showcased PostgreSQL expertise through database schema designs and query optimizations.",
+          "Utilized Docker for deployment scripting, aligning with nice-to-have skills."
+        ],
+        "gaps_and_risks": [
+          "Lacks direct Django experience, although has FastAPI background, which may require additional learning or adaptation.",
+          "No explicit experience with AWS, a nice-to-have skill, but has experience with Docker, which could be transferable."
+        ],
+        "concerns_flags": []
+      },
+      "candidate_profile_snapshot": {
+        "candidate_id": "cand-006",
+        "name": "Morgan Degraded (Graceful Degradation Case)",
+        "contact": {
+          "email": "morgan.degraded@example.com"
+        },
+        "summary": "Senior Backend Developer with 5.5 years experience writing APIs in Python and working with relational databases. Focuses on clean code and robust ledger services.",
+        "explicit_skills": [
+          "Python",
+          "FastAPI",
+          "PostgreSQL",
+          "Docker",
+          "REST APIs"
+        ],
+        "inferred_skills": [
+          "database schema design",
+          "deployment scripting",
+          "query optimization"
+        ],
+        "experience": [
+          {
+            "title": "Senior API Engineer",
+            "company": "LedgerLine",
+            "start_date": "Mar 2021",
+            "end_date": "Present",
+            "tenure_years": 5.34,
+            "description": "Owned ledger API services built in FastAPI. Handled Postgres database schema designs and query optimizations. Set up Docker deployment scripts.",
+            "inferred_skills": [
+              "database schema design",
+              "query optimization",
+              "deployment scripting"
+            ],
+            "growth_signals": [],
+            "scope_of_ownership": "ledger API services and Postgres database schema",
+            "achievement_language": "",
+            "is_relevant": true
+          }
+        ],
+        "behavioral_summary": "Stable and focused on technical expertise with a long-term commitment to a single role, indicating a strong sense of ownership and responsibility in backend development and database management.",
+        "overall_tenure_years": 5.34,
+        "avg_tenure_years": 5.34,
+        "growth_trajectory": "steady promotion",
+        "platform_activity": null
+      }
+    },
+    {
+      "candidate_id": "cand-003",
+      "name": "Taylor Keyword (Keyword Stuffing False Positive)",
+      "overall_score": 71.85,
+      "sub_scores": {
+        "semantic_score": 70.18,
+        "skills_score": 96.0,
+        "experience_score": 10.0,
+        "trajectory_score": 100.0
+      },
+      "rationale": {
+        "overall_rank_summary": "Taylor Keyword scored well on skills and trajectory but falls significantly short on experience, with only 1 year of experience as a Junior Python Developer, far below the 5 years required for a Senior Backend Engineer role. This substantial experience gap and underqualification risk place the candidate at a lower rank.",
+        "strengths": [
+          "Demonstrated Python, Django, and PostgreSQL capability by assisting in maintaining Django endpoints and storing logs in Postgres database at WebShop Co.",
+          "Showcased Docker experience by running containers locally, which is a nice-to-have skill for the role.",
+          "Possesses SQL skills, which is a must-have skill for the Senior Backend Engineer position."
+        ],
+        "gaps_and_risks": [
+          "Lacks sufficient experience, with only 1 year of experience, which is below the 5 years required for the Senior Backend Engineer role.",
+          "Has not directly worked with FastAPI, one of the must-have skills, although the candidate's experience with Django and Python could potentially be transferable.",
+          "Does not have the seniority level required for the role, currently holding a junior position."
+        ],
+        "concerns_flags": [
+          "Underqualification Risk: Candidate is at junior level but role requires Senior.",
+          "Experience Gap: Has 1.0 years of total experience, missing the 5 years requirement.",
+          "Job Hopper: Not applicable due to only having one job, but the short tenure of 1 year could be a concern."
+        ]
+      },
+      "candidate_profile_snapshot": {
+        "candidate_id": "cand-003",
+        "name": "Taylor Keyword (Keyword Stuffing False Positive)",
+        "contact": {
+          "email": "taylor.keyword@example.com"
+        },
+        "summary": "Senior Python Python Developer Developer. Passionate about Django Django Django Postgres PostgreSQL PostgreSQL Docker Docker. Senior Python backend developer.",
+        "explicit_skills": [
+          "Python",
+          "Django",
+          "PostgreSQL",
+          "Docker",
+          "AWS",
+          "SQL",
+          "Git",
+          "REST APIs"
+        ],
+        "inferred_skills": [
+          "endpoint management",
+          "scripting",
+          "containerization",
+          "logging"
+        ],
+        "experience": [
+          {
+            "title": "Junior Python Developer",
+            "company": "WebShop Co",
+            "start_date": "Jul 2025",
+            "end_date": "Present",
+            "tenure_years": 1.0,
+            "description": "Helped write Python scripts and assisted in maintaining Django endpoints. Used Postgres database for storing logs and ran Docker containers locally.",
+            "inferred_skills": [
+              "scripting",
+              "endpoint management"
+            ],
+            "growth_signals": [],
+            "scope_of_ownership": "assisted in maintaining Django endpoints and stored logs in Postgres database",
+            "achievement_language": "Helped write",
+            "is_relevant": true
+          }
+        ],
+        "behavioral_summary": "Assisted in maintaining endpoints and stored logs, indicating a collaborative approach to technical work with a focus on backend development.",
+        "overall_tenure_years": 1.0,
+        "avg_tenure_years": 1.0,
+        "growth_trajectory": "starting point",
+        "platform_activity": {
+          "github_commits_past_year": 15,
+          "github_repo_relevance": 0.88,
+          "linkedin_activity_recency": "inactive",
+          "stackoverflow_reputation": 10
+        }
+      }
+    },
+    {
+      "candidate_id": "cand-004",
+      "name": "Jordan Overqualified (Overqualified)",
+      "overall_score": 70.92,
+      "sub_scores": {
+        "semantic_score": 70.23,
+        "skills_score": 49.5,
+        "experience_score": 75.0,
+        "trajectory_score": 100.0
+      },
+      "rationale": {
+        "overall_rank_summary": "Jordan Overqualified scored high due to extensive experience and skills in Python, PostgreSQL, and AWS, but may be overqualified for the Senior Backend Engineer role, with a calculated score of 73.68 and an underqualification risk alert due to their mid-level experience despite the role requiring senior level.",
+        "strengths": [
+          "Demonstrated Python and PostgreSQL expertise by designing transaction matching engines processing 50k transactions/sec at PayGlobal.",
+          "Showcased AWS skills by overseeing architecture roadmap for high-frequency trading ledger at MegaBank Fintech.",
+          "Proven experience in managing large teams and overseeing architecture roadmaps, with 4 teams of backend and platform engineers (40+ developers) under their management at MegaBank Fintech.",
+          "Optimized Postgres vacuuming/partitioning policies, indicating strong database optimization skills."
+        ],
+        "gaps_and_risks": [
+          "Lacks direct experience with Django and FastAPI, despite having a strong Python background.",
+          "Total experience of 8.42 years exceeds the minimum requirement of 5 years, but their average tenure of 4.21 years may indicate potential job hopping risks."
+        ],
+        "concerns_flags": [
+          "Overqualification Risk: Candidate has 15+ years of experience and has held senior leadership positions, which may lead to dissatisfaction or boredom in a Senior Backend Engineer role."
+        ]
+      },
+      "candidate_profile_snapshot": {
+        "candidate_id": "cand-004",
+        "name": "Jordan Overqualified (Overqualified)",
+        "contact": {
+          "email": "jordan.overqualified@example.com"
+        },
+        "summary": "Principal Software Architect & former Director of Engineering. Over 15 years leading high-throughput transaction ledger architectures and managing large developer divisions.",
+        "explicit_skills": [
+          "Python",
+          "PostgreSQL",
+          "System Architecture",
+          "Scalability",
+          "AWS",
+          "Kubernetes",
+          "Engineering Management"
+        ],
+        "inferred_skills": [
+          "Database Optimization",
+          "Architecture Roadmap Planning",
+          "Team Management",
+          "Transaction Processing",
+          "Leadership",
+          "Data Aggregation"
+        ],
+        "experience": [
+          {
+            "title": "Director of Engineering",
+            "company": "MegaBank Fintech",
+            "start_date": "Mar 2022",
+            "end_date": "Present",
+            "tenure_years": 4.34,
+            "description": "Managed 4 teams of backend and platform engineers (40+ developers). Oversaw architecture roadmap for high-frequency trading ledger using Python, PostgreSQL, and AWS.",
+            "inferred_skills": [
+              "Team Management",
+              "Architecture Roadmap Planning"
+            ],
+            "growth_signals": [
+              "Managed large teams",
+              "Oversaw architecture roadmap"
+            ],
+            "scope_of_ownership": "4 teams of backend and platform engineers (40+ developers), high-frequency trading ledger architecture",
+            "achievement_language": "Managed, Oversaw",
+            "is_relevant": true
+          },
+          {
+            "title": "Principal Architect",
+            "company": "PayGlobal",
+            "start_date": "Jan 2018",
+            "end_date": "Feb 2022",
+            "tenure_years": 4.08,
+            "description": "Designed transaction matching engines processing 50k transactions/sec. Wrote Python data aggregation pipelines and optimized Postgres vacuuming/partitioning policies.",
+            "inferred_skills": [
+              "Data Aggregation",
+              "Database Optimization",
+              "Transaction Processing"
+            ],
+            "growth_signals": [
+              "Designed high-performance transaction matching engines"
+            ],
+            "scope_of_ownership": "Transaction matching engines, Python data aggregation pipelines, Postgres vacuuming/partitioning policies",
+            "achievement_language": "Designed, Wrote, Optimized",
+            "is_relevant": true
+          }
+        ],
+        "behavioral_summary": "The candidate demonstrates strong technical leadership and architecture skills, with a focus on high-throughput transaction processing and large-scale team management. They exhibit a stable work history with long-term roles, indicating a strong ability to own and drive complex technical projects.",
+        "overall_tenure_years": 8.42,
+        "avg_tenure_years": 4.21,
+        "growth_trajectory": "Steady promotion",
+        "platform_activity": {
+          "github_commits_past_year": 40,
+          "github_repo_relevance": 0.9,
+          "linkedin_activity_recency": "active",
+          "stackoverflow_reputation": 4500
+        }
+      }
+    },
+    {
+      "candidate_id": "cand-007",
+      "name": "Chris Hopper (Job Hopper)",
+      "overall_score": 69.84,
+      "sub_scores": {
+        "semantic_score": 73.68,
+        "skills_score": 80.0,
+        "experience_score": 46.7,
+        "trajectory_score": 72.0
+      },
+      "rationale": {
+        "overall_rank_summary": "Chris Hopper scored relatively well in terms of skills, with a score of 80.0, but falls short in experience, with only 2.17 years, and exhibits a job-hopping trajectory, raising concerns about stability and seniority level.",
+        "strengths": [
+          "Demonstrated Python and Django capability by writing APIs for a micro-ledger application at LedgerFast.",
+          "Showcased PostgreSQL skills by assisting in writing Postgres queries for financial reports at FinSprint.",
+          "Utilized AWS and Docker, as listed in explicit skills, although specific projects are not mentioned."
+        ],
+        "gaps_and_risks": [
+          "Lacks direct FastAPI experience, despite having Django background, which may require additional learning.",
+          "Total experience of 2.17 years is below the requested 5 years, indicating a significant experience gap.",
+          "Lacks SQL experience outside of PostgreSQL, which may be a concern given the requirement for SQL skills."
+        ],
+        "concerns_flags": [
+          "Job Hopper: average tenure is 0.43 years across 5 jobs, indicating instability and potential difficulty in long-term commitment.",
+          "Underqualification Risk: Candidate is at mid-level but role requires Senior, which may impact ability to lead or mentor junior team members."
+        ]
+      },
+      "candidate_profile_snapshot": {
+        "candidate_id": "cand-007",
+        "name": "Chris Hopper (Job Hopper)",
+        "contact": {
+          "email": "chris.hopper@example.com"
+        },
+        "summary": "Backend Developer with strong Python, Django, and PostgreSQL skills. Experienced working in highly agile fintech startups.",
+        "explicit_skills": [
+          "Python",
+          "Django",
+          "PostgreSQL",
+          "AWS",
+          "Docker"
+        ],
+        "inferred_skills": [
+          "Agile development",
+          "Bug fixing",
+          "Database querying",
+          "Script modification",
+          "API design"
+        ],
+        "experience": [
+          {
+            "title": "Backend Engineer",
+            "company": "LedgerFast",
+            "start_date": "Jan 2026",
+            "end_date": "Present",
+            "tenure_years": 0.5,
+            "description": "Wrote Python APIs for a micro-ledger application using Django and Postgres.",
+            "inferred_skills": [
+              "API design"
+            ],
+            "growth_signals": [],
+            "scope_of_ownership": "Micro-ledger application",
+            "achievement_language": "Wrote",
+            "is_relevant": true
+          },
+          {
+            "title": "Software Developer",
+            "company": "PaySplit",
+            "start_date": "Jul 2025",
+            "end_date": "Dec 2025",
+            "tenure_years": 0.42,
+            "description": "Maintained payment endpoints written in Python.",
+            "inferred_skills": [
+              "Payment endpoint maintenance"
+            ],
+            "growth_signals": [],
+            "scope_of_ownership": "Payment endpoints",
+            "achievement_language": "Maintained",
+            "is_relevant": true
+          },
+          {
+            "title": "Junior Backend Dev",
+            "company": "FinSprint",
+            "start_date": "Jan 2025",
+            "end_date": "Jun 2025",
+            "tenure_years": 0.41,
+            "description": "Assisted in writing Postgres queries for financial reports.",
+            "inferred_skills": [
+              "Database querying"
+            ],
+            "growth_signals": [],
+            "scope_of_ownership": "Financial reports",
+            "achievement_language": "Assisted in writing",
+            "is_relevant": true
+          },
+          {
+            "title": "Python Coder",
+            "company": "CashFlow",
+            "start_date": "Jul 2024",
+            "end_date": "Dec 2024",
+            "tenure_years": 0.42,
+            "description": "Modified backend Python scripts and Django models.",
+            "inferred_skills": [
+              "Script modification"
+            ],
+            "growth_signals": [],
+            "scope_of_ownership": "Backend scripts and Django models",
+            "achievement_language": "Modified",
+            "is_relevant": true
+          },
+          {
+            "title": "Junior Developer",
+            "company": "FundNow",
+            "start_date": "Jan 2024",
+            "end_date": "Jun 2024",
+            "tenure_years": 0.42,
+            "description": "Fixed minor bugs in Python-based web applications.",
+            "inferred_skills": [
+              "Bug fixing"
+            ],
+            "growth_signals": [],
+            "scope_of_ownership": "Python-based web applications",
+            "achievement_language": "Fixed",
+            "is_relevant": true
+          }
+        ],
+        "behavioral_summary": "The candidate demonstrates a strong technical foundation in backend development with a focus on Python, Django, and PostgreSQL. They have worked in various agile fintech startups, showcasing adaptability and a willingness to take on different roles. However, their job tenure is relatively short, indicating potential job-hopping behavior.",
+        "overall_tenure_years": 2.17,
+        "avg_tenure_years": 0.43,
+        "growth_trajectory": "job-hopping",
+        "platform_activity": {
+          "github_commits_past_year": 220,
+          "github_repo_relevance": 0.9,
+          "linkedin_activity_recency": "active",
+          "stackoverflow_reputation": 300
+        }
+      }
+    },
+    {
+      "candidate_id": "cand-008",
+      "name": "Sam TechMismatch (Domain Match, Tech Mismatch)",
+      "overall_score": 64.42,
+      "sub_scores": {
+        "semantic_score": 66.41,
+        "skills_score": 15.0,
+        "experience_score": 100.0,
+        "trajectory_score": 100.0
+      },
+      "rationale": {
+        "overall_rank_summary": "Sam TechMismatch scored relatively low due to a significant mismatch in required technical skills, despite having 6 years of experience as a Senior Backend Developer and a steady growth trajectory. They rank lower compared to other candidates due to lacking direct experience with Python, PostgreSQL, Django, FastAPI, and SQL.",
+        "strengths": [
+          "Demonstrated leadership in backend architecture for high-security distributed ledger systems using Java and Spring Boot at StateBank Fintech.",
+          "Handled transaction consistency over Oracle DB, showcasing expertise in distributed database management.",
+          "Utilized Kubernetes, indicating experience with containerization and orchestration."
+        ],
+        "gaps_and_risks": [
+          "Lacks direct experience with Python, a primary requirement for the role.",
+          "No experience with Django or FastAPI, which are crucial for the position.",
+          "Although experienced with Oracle DB, lacks direct experience with PostgreSQL."
+        ],
+        "concerns_flags": []
+      },
+      "candidate_profile_snapshot": {
+        "candidate_id": "cand-008",
+        "name": "Sam TechMismatch (Domain Match, Tech Mismatch)",
+        "contact": {
+          "email": "sam.techmismatch@example.com"
+        },
+        "summary": "Senior Backend Developer in Fintech ledger divisions with 6 years experience. Expert in Spring Boot and highly distributed cloud databases.",
+        "explicit_skills": [
+          "Java",
+          "Spring Boot",
+          "Oracle DB",
+          "Kubernetes",
+          "Azure",
+          "Microservices"
+        ],
+        "inferred_skills": [
+          "Security",
+          "Leadership",
+          "Distributed Systems",
+          "Transaction Management"
+        ],
+        "experience": [
+          {
+            "title": "Senior Ledger Engineer",
+            "company": "StateBank Fintech",
+            "start_date": "Jan 2021",
+            "end_date": "Present",
+            "tenure_years": 5.5,
+            "description": "Led backend architecture for high-security distributed ledger systems using Java and Spring Boot. Handled transaction consistency over Oracle DB.",
+            "inferred_skills": [
+              "Architecture Design",
+              "Transaction Management"
+            ],
+            "growth_signals": [
+              "Led backend architecture"
+            ],
+            "scope_of_ownership": "Backend architecture for distributed ledger systems",
+            "achievement_language": "Led",
+            "is_relevant": true
+          }
+        ],
+        "behavioral_summary": "The candidate demonstrates strong technical leadership skills, with a focus on designing and implementing secure distributed systems. They have a stable work history, with a long tenure at a single company, indicating strong work stability and commitment.",
+        "overall_tenure_years": 5.5,
+        "avg_tenure_years": 5.5,
+        "growth_trajectory": "Steady promotion",
+        "platform_activity": {
+          "github_commits_past_year": 110,
+          "github_repo_relevance": 0.2,
+          "linkedin_activity_recency": "active",
+          "stackoverflow_reputation": 800
+        }
+      }
+    },
+    {
+      "candidate_id": "cand-002",
+      "name": "Jamie Transferable (Partial Fit - Transferable Skills)",
+      "overall_score": 59.99,
+      "sub_scores": {
+        "semantic_score": 61.31,
+        "skills_score": 22.0,
+        "experience_score": 75.0,
+        "trajectory_score": 100.0
+      },
+      "rationale": {
+        "overall_rank_summary": "Jamie Transferable scored 61.31 due to a strong experience score of 75.0 and a perfect trajectory score of 100.0, but was held back by a low skills score of 22.0, primarily due to lacking direct experience with required skills like Python, Django, and FastAPI. The candidate stands as a partial fit, requiring significant upskilling to meet the Senior Backend Engineer role's requirements.",
+        "strengths": [
+          "Demonstrated Docker capability by implementing it for localized workflows at SaaS Billing Inc.",
+          "Showcased expertise in designing transactional APIs using Node.js/Express, which could be transferable to learning FastAPI.",
+          "Managed database consistency using MySQL, which shares some similarities with PostgreSQL and could be a transferable skill.",
+          "Achieved 5.5 years of tenure as a Backend Engineer, indicating stability and potential for growth."
+        ],
+        "gaps_and_risks": [
+          "Lacks direct experience with Python, a must-have skill for the role.",
+          "Has no experience with Django or FastAPI, which are critical requirements for the position.",
+          "Total experience, although meeting the minimum years, is not complemented by the required technical skills, posing an underqualification risk."
+        ],
+        "concerns_flags": [
+          "Underqualification Risk: Candidate is at mid level but role requires Senior, as indicated by the calculated score alerts."
+        ]
+      },
+      "candidate_profile_snapshot": {
+        "candidate_id": "cand-002",
+        "name": "Jamie Transferable (Partial Fit - Transferable Skills)",
+        "contact": {
+          "email": "jamie.transferable@example.com"
+        },
+        "summary": "Software Engineer focused on backend architecture. Expert in Node.js and REST APIs with a strong background in transactional databases.",
+        "explicit_skills": [
+          "JavaScript",
+          "Node.js",
+          "Express",
+          "MongoDB",
+          "MySQL",
+          "Docker",
+          "Redis"
+        ],
+        "inferred_skills": [],
+        "experience": [
+          {
+            "title": "Backend Engineer",
+            "company": "SaaS Billing Inc",
+            "start_date": "Jan 2021",
+            "end_date": "Present",
+            "tenure_years": 5.5,
+            "description": "Designed transaction billing APIs in Node.js/Express. Managed billing ledger consistency using MySQL with strict ACID isolation levels. Implemented Docker for localized workflows.",
+            "inferred_skills": [],
+            "growth_signals": [],
+            "scope_of_ownership": "General ownership",
+            "achievement_language": "Accomplished general engineering duties",
+            "is_relevant": true
+          }
+        ],
+        "behavioral_summary": "Fallback parsed profile due to synthesis error.",
+        "overall_tenure_years": 5.5,
+        "avg_tenure_years": 5.5,
+        "growth_trajectory": "stable",
+        "platform_activity": {
+          "github_commits_past_year": 95,
+          "github_repo_relevance": 0.5,
+          "linkedin_activity_recency": "active",
+          "stackoverflow_reputation": 200
+        }
+      }
+    },
+    {
+      "candidate_id": "cand-005",
+      "name": "Casey Weak (Weak Fit)",
+      "overall_score": 49.11,
+      "sub_scores": {
+        "semantic_score": 35.03,
+        "skills_score": 12.0,
+        "experience_score": 75.0,
+        "trajectory_score": 100.0
+      },
+      "rationale": {
+        "overall_rank_summary": "Casey Weak scored low due to a significant mismatch between their skillset and the job description requirements, despite having a steady promotion growth trajectory and 7.83 years of experience. They rank poorly relative to the Senior Backend Engineer role requirements.",
+        "strengths": [
+          "Demonstrated long-term commitment with 7.83 years of tenure at DesktopSoft, indicating stability and potential for growth.",
+          "Utilized SQLite for local database interactions, showing some transferable skills in database management, although not directly applicable to PostgreSQL or the required backend skills."
+        ],
+        "gaps_and_risks": [
+          "Lacks all must-have skills for the role, including Python, PostgreSQL, Django, FastAPI, and SQL, indicating a significant gap in required technical expertise.",
+          "Total experience, although meeting the minimum years, is not aligned with the seniority level due to the lack of relevant backend experience.",
+          "No experience with Docker or AWS, which are nice-to-have skills for the position."
+        ],
+        "concerns_flags": [
+          "Underqualification Risk: Candidate's skills and experience do not align with the Senior Backend Engineer role, posing a risk for underperformance."
+        ]
+      },
+      "candidate_profile_snapshot": {
+        "candidate_id": "cand-005",
+        "name": "Casey Weak (Weak Fit)",
+        "contact": {
+          "email": "casey.weak@example.com"
+        },
+        "summary": "Desktop Application Developer specializing in C++ and Java with 8 years experience building local GUI software.",
+        "explicit_skills": [
+          "C++",
+          "Java",
+          "Qt",
+          "Swing",
+          "SQLite",
+          "Multi-threading"
+        ],
+        "inferred_skills": [
+          "local database management",
+          "GUI development"
+        ],
+        "experience": [
+          {
+            "title": "C++ Engineer",
+            "company": "DesktopSoft",
+            "start_date": "Sep 2018",
+            "end_date": "Present",
+            "tenure_years": 7.83,
+            "description": "Developed GUI dashboard tools in C++ using Qt. Handled local database interactions utilizing SQLite.",
+            "inferred_skills": [
+              "GUI development",
+              "database interaction"
+            ],
+            "growth_signals": [],
+            "scope_of_ownership": "GUI dashboard tools and local database interactions",
+            "achievement_language": "",
+            "is_relevant": true
+          }
+        ],
+        "behavioral_summary": "Stable work history with a focus on technical ownership of GUI dashboard tools and local database interactions.",
+        "overall_tenure_years": 7.83,
+        "avg_tenure_years": 7.83,
+        "growth_trajectory": "steady promotion",
+        "platform_activity": {
+          "github_commits_past_year": 12,
+          "github_repo_relevance": 0.1,
+          "linkedin_activity_recency": "none",
+          "stackoverflow_reputation": 150
+        }
+      }
+    }
+  ]
+}

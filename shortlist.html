@@ -1,0 +1,918 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Recruiter Shortlist Report: Senior Backend Engineer</title>
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+        <style>
+            :root {
+                --bg: #090d16;
+                --card-bg: #111827;
+                --text: #f3f4f6;
+                --text-muted: #9ca3af;
+                --primary: #6366f1;
+                --primary-glow: rgba(99, 102, 241, 0.15);
+                --success: #10b981;
+                --warning: #f59e0b;
+                --danger: #ef4444;
+                --border: rgba(255, 255, 255, 0.08);
+            }
+            
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            
+            body {
+                background-color: var(--bg);
+                color: var(--text);
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                line-height: 1.6;
+                padding: 3rem 2rem;
+            }
+            
+            .container {
+                max-width: 1100px;
+                margin: 0 auto;
+            }
+            
+            header {
+                margin-bottom: 3rem;
+                border-bottom: 1px solid var(--border);
+                padding-bottom: 2rem;
+            }
+            
+            .header-badge {
+                display: inline-block;
+                background-color: var(--primary-glow);
+                color: #818cf8;
+                padding: 0.25rem 0.75rem;
+                border-radius: 50px;
+                font-size: 0.85rem;
+                font-weight: 600;
+                margin-bottom: 0.75rem;
+                border: 1px solid rgba(99, 102, 241, 0.3);
+            }
+            
+            h1 {
+                font-family: 'Outfit', sans-serif;
+                font-size: 2.5rem;
+                font-weight: 700;
+                margin-bottom: 0.5rem;
+                background: linear-gradient(135deg, #fff, #9ca3af);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            
+            .jd-summary-card {
+                background-color: var(--card-bg);
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                padding: 1.5rem;
+                margin-top: 1.5rem;
+            }
+            
+            .jd-summary-card h3 {
+                font-family: 'Outfit', sans-serif;
+                margin-bottom: 0.75rem;
+                color: #818cf8;
+            }
+            
+            .jd-meta {
+                display: flex;
+                gap: 1.5rem;
+                margin-top: 1rem;
+                font-size: 0.9rem;
+                color: var(--text-muted);
+            }
+            
+            .jd-meta strong {
+                color: var(--text);
+            }
+            
+            .candidate-card {
+                background-color: var(--card-bg);
+                border: 1px solid var(--border);
+                border-radius: 16px;
+                padding: 2rem;
+                margin-bottom: 2rem;
+                position: relative;
+                overflow: hidden;
+                transition: transform 0.2s ease, border-color 0.2s ease;
+            }
+            
+            .candidate-card:hover {
+                border-color: rgba(99, 102, 241, 0.4);
+                transform: translateY(-2px);
+            }
+            
+            .card-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: 1px solid var(--border);
+                padding-bottom: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .header-left {
+                display: flex;
+                align-items: center;
+                gap: 1.25rem;
+            }
+            
+            .rank-badge {
+                font-family: 'Outfit', sans-serif;
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: #818cf8;
+                background-color: var(--primary-glow);
+                padding: 0.5rem 1rem;
+                border-radius: 8px;
+                border: 1px solid rgba(99, 102, 241, 0.2);
+            }
+            
+            .candidate-card h3 {
+                font-family: 'Outfit', sans-serif;
+                font-size: 1.5rem;
+                font-weight: 600;
+            }
+            
+            .progression {
+                font-size: 0.85rem;
+                color: var(--text-muted);
+                margin-top: 0.25rem;
+            }
+            
+            .score-circle {
+                font-family: 'Outfit', sans-serif;
+                font-size: 1.8rem;
+                font-weight: 700;
+                width: 65px;
+                height: 65px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 3px solid;
+            }
+            
+            .score-high {
+                color: var(--success);
+                border-color: var(--success);
+                background-color: rgba(16, 185, 129, 0.1);
+            }
+            
+            .score-mid {
+                color: var(--warning);
+                border-color: var(--warning);
+                background-color: rgba(245, 158, 11, 0.1);
+            }
+            
+            .score-low {
+                color: var(--danger);
+                border-color: var(--danger);
+                background-color: rgba(239, 68, 68, 0.1);
+            }
+            
+            .card-grid {
+                display: grid;
+                grid-template-columns: 1fr 1.5fr;
+                gap: 2rem;
+            }
+            
+            @media (max-width: 768px) {
+                .card-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+            
+            .sub-scores-section h4, 
+            .skills-section h4,
+            .rationale-section h4 {
+                font-family: 'Outfit', sans-serif;
+                font-size: 1.05rem;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                color: var(--text-muted);
+                margin-bottom: 1rem;
+            }
+            
+            .bar-container {
+                margin-bottom: 1rem;
+            }
+            
+            .bar-label {
+                display: block;
+                font-size: 0.85rem;
+                color: var(--text-muted);
+                margin-bottom: 0.25rem;
+            }
+            
+            .bar-outer {
+                height: 8px;
+                background-color: rgba(255, 255, 255, 0.05);
+                border-radius: 4px;
+                overflow: hidden;
+            }
+            
+            .bar-inner {
+                height: 100%;
+                background-color: var(--primary);
+                border-radius: 4px;
+            }
+            
+            .tags-container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                margin-top: 0.5rem;
+            }
+            
+            .tag {
+                font-size: 0.75rem;
+                background-color: rgba(255, 255, 255, 0.05);
+                border: 1px solid var(--border);
+                color: var(--text);
+                padding: 0.2rem 0.6rem;
+                border-radius: 4px;
+            }
+            
+            .tag-more {
+                color: var(--text-muted);
+            }
+            
+            .rationale-text {
+                font-style: italic;
+                font-size: 1.05rem;
+                color: #e5e7eb;
+                line-height: 1.5;
+                margin-bottom: 1.5rem;
+                padding-left: 1rem;
+                border-left: 3px solid var(--primary);
+            }
+            
+            .bullet-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            @media (max-width: 600px) {
+                .bullet-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+            
+            .bullets-strengths h5 {
+                color: var(--success);
+                font-size: 0.95rem;
+                margin-bottom: 0.5rem;
+                font-family: 'Outfit', sans-serif;
+            }
+            
+            .bullets-gaps h5 {
+                color: var(--warning);
+                font-size: 0.95rem;
+                margin-bottom: 0.5rem;
+                font-family: 'Outfit', sans-serif;
+            }
+            
+            ul {
+                list-style-type: none;
+            }
+            
+            ul li {
+                font-size: 0.85rem;
+                margin-bottom: 0.5rem;
+                position: relative;
+                padding-left: 1rem;
+                color: #d1d5db;
+            }
+            
+            ul li::before {
+                content: "•";
+                position: absolute;
+                left: 0;
+            }
+            
+            .bullets-strengths ul li::before {
+                color: var(--success);
+            }
+            
+            .bullets-gaps ul li::before {
+                color: var(--warning);
+            }
+            
+            .card-flags {
+                background-color: rgba(239, 68, 68, 0.05);
+                border: 1px solid rgba(239, 68, 68, 0.15);
+                border-radius: 8px;
+                padding: 1rem;
+                margin-top: 1.5rem;
+            }
+            
+            .card-flags h4 {
+                font-family: 'Outfit', sans-serif;
+                color: var(--danger);
+                font-size: 0.9rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .card-flags ul li {
+                color: #fca5a5;
+                font-size: 0.8rem;
+            }
+            
+            .card-flags ul li::before {
+                color: var(--danger);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <span class="header-badge">AI Shortlist Assistant</span>
+                <h1>Candidate Shortlist Report</h1>
+                <p style="color: var(--text-muted)">Ranked candidate profiles generated with evidence-based explanations</p>
+                
+                <div class="jd-summary-card">
+                    <h3>Target Job Description: Senior Backend Engineer</h3>
+                    <p style="font-size: 0.95rem; color: #d1d5db;">We are seeking a Senior Backend Engineer to join our core ledger team, responsible for building, optimizing, and maintaining secure backend APIs for financial transactions, with expertise in Python, PostgreSQL, and a strong ownership mindset.</p>
+                    <div class="jd-meta">
+                        <div>Seniority Level: <strong>Senior</strong></div>
+                        <div>Target Domain: <strong>Backend</strong></div>
+                        <div>Min Experience: <strong>5 years</strong></div>
+                    </div>
+                </div>
+            </header>
+            
+            <main>
+                
+        <div class="candidate-card">
+            <div class="card-header">
+                <div class="header-left">
+                    <span class="rank-badge">#1</span>
+                    <div>
+                        <h3>Alex Strong (Strong Fit)</h3>
+                        <p class="progression">Software Engineer II &rarr; Senior Software Engineer</p>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="score-circle score-high">92.64</div>
+                </div>
+            </div>
+            
+            <div class="card-grid">
+                <div class="grid-left">
+                    <div class="sub-scores-section">
+                        <h4>Fit Breakdown</h4>
+                        <div class="bar-container">
+                            <span class="bar-label">Semantic Match (79.48%)</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 79.48%;"></div></div>
+                        </div>
+                        <div class="bar-container">
+                            <span class="bar-label">Skills Match (96.0%)</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 96.0%;"></div></div>
+                        </div>
+                        <div class="bar-container">
+                            <span class="bar-label">Experience & Seniority (100.0%)</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 100.0%;"></div></div>
+                        </div>
+                        <div class="bar-container">
+                            <span class="bar-label">Trajectory & Stability (100.0%)</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 100.0%;"></div></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skills-section">
+                        <h4>Key Skills</h4>
+                        <div class="tags-container">
+                            <span class="tag">Python</span><span class="tag">Django</span><span class="tag">PostgreSQL</span><span class="tag">Docker</span><span class="tag">AWS</span><span class="tag">SQL</span><span class="tag">Git</span><span class="tag">REST APIs</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid-right">
+                    <div class="rationale-section">
+                        <h4>Recruiter Rationale</h4>
+                        <p class="rationale-text">"Alex Strong scored highly due to their extensive experience in backend engineering, strong skill alignment with the job description, and a steady growth trajectory, making them a strong fit for the Senior Backend Engineer role. They rank highly relative to the JD requirements, with a minor concern regarding average tenure."</p>
+                    </div>
+                    
+                    <div class="bullet-grid">
+                        <div class="bullets-strengths">
+                            <h5>Key Strengths</h5>
+                            <ul><li>Demonstrated PostgreSQL optimization capability by reducing transactional API latency by 45% at FintechScale.</li><li>Developed REST APIs using Python and Django, and implemented Docker containerization for core APIs at PayTech Solutions.</li><li>Showcased leadership skills by mentoring 3 junior developers and owning end-to-end ledger services at FintechScale.</li><li>Successfully migrated services to AWS ECS, utilizing AWS and Docker skills.</li></ul>
+                        </div>
+                        <div class="bullets-gaps">
+                            <h5>Gaps & Risks</h5>
+                            <ul><li>Lacks direct experience with FastAPI, although has Django experience which shares some similarities and could be transferable.</li></ul>
+                        </div>
+                    </div>
+                    
+                    
+            <div class="card-flags">
+                <h4>Recruiter Flags / Concerns</h4>
+                <ul><li>Average tenure of 3.12 years is slightly below the expected average for a senior role, indicating potential job hopping, but overall tenure of 6.25 years and steady growth trajectory mitigate this concern.</li></ul>
+            </div>
+            
+                </div>
+            </div>
+        </div>
+        
+        <div class="candidate-card">
+            <div class="card-header">
+                <div class="header-left">
+                    <span class="rank-badge">#2</span>
+                    <div>
+                        <h3>Morgan Degraded (Graceful Degradation Case)</h3>
+                        <p class="progression">Senior API Engineer</p>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="score-circle score-high">85.24</div>
+                </div>
+            </div>
+            
+            <div class="card-grid">
+                <div class="grid-left">
+                    <div class="sub-scores-section">
+                        <h4>Fit Breakdown</h4>
+                        <div class="bar-container">
+                            <span class="bar-label">Semantic Match (80.8%)</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 80.8%;"></div></div>
+                        </div>
+                        <div class="bar-container">
+                            <span class="bar-label">Skills Match (70.0%)</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 70.0%;"></div></div>
+                        </div>
+                        <div class="bar-container">
+                            <span class="bar-label">Experience & Seniority (100.0%)</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 100.0%;"></div></div>
+                        </div>
+                        <div class="bar-container">
+                            <span class="bar-label">Trajectory & Stability (100.0%)</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 100.0%;"></div></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skills-section">
+                        <h4>Key Skills</h4>
+                        <div class="tags-container">
+                            <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">Docker</span><span class="tag">REST APIs</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid-right">
+                    <div class="rationale-section">
+                        <h4>Recruiter Rationale</h4>
+                        <p class="rationale-text">"Morgan Degraded scored highly due to their 5.34 years of experience as a Senior API Engineer at LedgerLine, aligning with the Senior Backend Engineer role's requirements, but lacks direct experience with Django, a must-have skill."</p>
+                    </div>
+                    
+                    <div class="bullet-grid">
+                        <div class="bullets-strengths">
+                            <h5>Key Strengths</h5>
+                            <ul><li>Demonstrated FastAPI capability by owning ledger API services at LedgerLine.</li><li>Showcased PostgreSQL expertise through database schema designs and query optimizations.</li><li>Utilized Docker for deployment scripting, aligning with nice-to-have skills.</li></ul>
+                        </div>
+                        <div class="bullets-gaps">
+                            <h5>Gaps & Risks</h5>
+                            <ul><li>Lacks direct Django experience, although has FastAPI background, which may require additional learning or adaptation.</li><li>No explicit experience with AWS, a nice-to-have skill, but has experience with Docker, which could be transferable.</li></ul>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="candidate-card">
+            <div class="card-header">
+                <div class="header-left">
+                    <span class="rank-badge">#3</span>
+                    <div>
+                        <h3>Taylor Keyword (Keyword Stuffing False Positive)</h3>
+                        <p class="progression">Junior Python Developer</p>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="score-circle score-mid">71.85</div>
+                </div>
+            </div>
+            
+            <div class="card-grid">
+                <div class="grid-left">
+                    <div class="sub-scores-section">
+                        <h4>Fit Breakdown</h4>
+                        <div class="bar-container">
+                            <span class="bar-label">Semantic Match (70.18%)</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 70.18%;"></div></div>
+                        </div>
+                        <div class="bar-container">
+                            <span class="bar-label">Skills Match (96.0%)</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 96.0%;"></div></div>
+                        </div>
+                        <div class="bar-container">
+                            <span class="bar-label">Experience & Seniority (10.0%)</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 10.0%;"></div></div>
+                        </div>
+                        <div class="bar-container">
+                            <span class="bar-label">Trajectory & Stability (100.0%)</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 100.0%;"></div></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skills-section">
+                        <h4>Key Skills</h4>
+                        <div class="tags-container">
+                            <span class="tag">Python</span><span class="tag">Django</span><span class="tag">PostgreSQL</span><span class="tag">Docker</span><span class="tag">AWS</span><span class="tag">SQL</span><span class="tag">Git</span><span class="tag">REST APIs</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid-right">
+                    <div class="rationale-section">
+                        <h4>Recruiter Rationale</h4>
+                        <p class="rationale-text">"Taylor Keyword scored well on skills and trajectory but falls significantly short on experience, with only 1 year of experience as a Junior Python Developer, far below the 5 years required for a Senior Backend Engineer role. This substantial experience gap and underqualification risk place the candidate at a lower rank."</p>
+                    </div>
+                    
+                    <div class="bullet-grid">
+                        <div class="bullets-strengths">
+                            <h5>Key Strengths</h5>
+                            <ul><li>Demonstrated Python, Django, and PostgreSQL capability by assisting in maintaining Django endpoints and storing logs in Postgres database at WebShop Co.</li><li>Showcased Docker experience by running containers locally, which is a nice-to-have skill for the role.</li><li>Possesses SQL skills, which is a must-have skill for the Senior Backend Engineer position.</li></ul>
+                        </div>
+                        <div class="bullets-gaps">
+                            <h5>Gaps & Risks</h5>
+                            <ul><li>Lacks sufficient experience, with only 1 year of experience, which is below the 5 years required for the Senior Backend Engineer role.</li><li>Has not directly worked with FastAPI, one of the must-have skills, although the candidate's experience with Django and Python could potentially be transferable.</li><li>Does not have the seniority level required for the role, currently holding a junior position.</li></ul>
+                        </div>
+                    </div>
+                    
+                    
+            <div class="card-flags">
+                <h4>Recruiter Flags / Concerns</h4>
+                <ul><li>Underqualification Risk: Candidate is at junior level but role requires Senior.</li><li>Experience Gap: Has 1.0 years of total experience, missing the 5 years requirement.</li><li>Job Hopper: Not applicable due to only having one job, but the short tenure of 1 year could be a concern.</li></ul>
+            </div>
+            
+                </div>
+            </div>
+        </div>
+        
+        <div class="candidate-card">
+            <div class="card-header">
+                <div class="header-left">
+                    <span class="rank-badge">#4</span>
+                    <div>
+                        <h3>Jordan Overqualified (Overqualified)</h3>
+                        <p class="progression">Principal Architect &rarr; Director of Engineering</p>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="score-circle score-mid">70.92</div>
+                </div>
+            </div>
+            
+            <div class="card-grid">
+                <div class="grid-left">
+                    <div class="sub-scores-section">
+                        <h4>Fit Breakdown</h4>
+                        <div class="bar-container">
+                            <span class="bar-label">Semantic Match (70.23%)</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 70.23%;"></div></div>
+                        </div>
+                        <div class="bar-container">
+                            <span class="bar-label">Skills Match (49.5%)</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 49.5%;"></div></div>
+                        </div>
+                        <div class="bar-container">
+                            <span class="bar-label">Experience & Seniority (75.0%)</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 75.0%;"></div></div>
+                        </div>
+                        <div class="bar-container">
+                            <span class="bar-label">Trajectory & Stability (100.0%)</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 100.0%;"></div></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skills-section">
+                        <h4>Key Skills</h4>
+                        <div class="tags-container">
+                            <span class="tag">Python</span><span class="tag">PostgreSQL</span><span class="tag">System Architecture</span><span class="tag">Scalability</span><span class="tag">AWS</span><span class="tag">Kubernetes</span><span class="tag">Engineering Management</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid-right">
+                    <div class="rationale-section">
+                        <h4>Recruiter Rationale</h4>
+                        <p class="rationale-text">"Jordan Overqualified scored high due to extensive experience and skills in Python, PostgreSQL, and AWS, but may be overqualified for the Senior Backend Engineer role, with a calculated score of 73.68 and an underqualification risk alert due to their mid-level experience despite the role requiring senior level."</p>
+                    </div>
+                    
+                    <div class="bullet-grid">
+                        <div class="bullets-strengths">
+                            <h5>Key Strengths</h5>
+                            <ul><li>Demonstrated Python and PostgreSQL expertise by designing transaction matching engines processing 50k transactions/sec at PayGlobal.</li><li>Showcased AWS skills by overseeing architecture roadmap for high-frequency trading ledger at MegaBank Fintech.</li><li>Proven experience in managing large teams and overseeing architecture roadmaps, with 4 teams of backend and platform engineers (40+ developers) under their management at MegaBank Fintech.</li><li>Optimized Postgres vacuuming/partitioning policies, indicating strong database optimization skills.</li></ul>
+                        </div>
+                        <div class="bullets-gaps">
+                            <h5>Gaps & Risks</h5>
+                            <ul><li>Lacks direct experience with Django and FastAPI, despite having a strong Python background.</li><li>Total experience of 8.42 years exceeds the minimum requirement of 5 years, but their average tenure of 4.21 years may indicate potential job hopping risks.</li></ul>
+                        </div>
+                    </div>
+                    
+                    
+            <div class="card-flags">
+                <h4>Recruiter Flags / Concerns</h4>
+                <ul><li>Overqualification Risk: Candidate has 15+ years of experience and has held senior leadership positions, which may lead to dissatisfaction or boredom in a Senior Backend Engineer role.</li></ul>
+            </div>
+            
+                </div>
+            </div>
+        </div>
+        
+        <div class="candidate-card">
+            <div class="card-header">
+                <div class="header-left">
+                    <span class="rank-badge">#5</span>
+                    <div>
+                        <h3>Chris Hopper (Job Hopper)</h3>
+                        <p class="progression">Junior Developer &rarr; Python Coder &rarr; Junior Backend Dev &rarr; Software Developer &rarr; Backend Engineer</p>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="score-circle score-mid">69.84</div>
+                </div>
+            </div>
+            
+            <div class="card-grid">
+                <div class="grid-left">
+                    <div class="sub-scores-section">
+                        <h4>Fit Breakdown</h4>
+                        <div class="bar-container">
+                            <span class="bar-label">Semantic Match (73.68%)</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 73.68%;"></div></div>
+                        </div>
+                        <div class="bar-container">
+                            <span class="bar-label">Skills Match (80.0%)</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 80.0%;"></div></div>
+                        </div>
+                        <div class="bar-container">
+                            <span class="bar-label">Experience & Seniority (46.7%)</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 46.7%;"></div></div>
+                        </div>
+                        <div class="bar-container">
+                            <span class="bar-label">Trajectory & Stability (72.0%)</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 72.0%;"></div></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skills-section">
+                        <h4>Key Skills</h4>
+                        <div class="tags-container">
+                            <span class="tag">Python</span><span class="tag">Django</span><span class="tag">PostgreSQL</span><span class="tag">AWS</span><span class="tag">Docker</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid-right">
+                    <div class="rationale-section">
+                        <h4>Recruiter Rationale</h4>
+                        <p class="rationale-text">"Chris Hopper scored relatively well in terms of skills, with a score of 80.0, but falls short in experience, with only 2.17 years, and exhibits a job-hopping trajectory, raising concerns about stability and seniority level."</p>
+                    </div>
+                    
+                    <div class="bullet-grid">
+                        <div class="bullets-strengths">
+                            <h5>Key Strengths</h5>
+                            <ul><li>Demonstrated Python and Django capability by writing APIs for a micro-ledger application at LedgerFast.</li><li>Showcased PostgreSQL skills by assisting in writing Postgres queries for financial reports at FinSprint.</li><li>Utilized AWS and Docker, as listed in explicit skills, although specific projects are not mentioned.</li></ul>
+                        </div>
+                        <div class="bullets-gaps">
+                            <h5>Gaps & Risks</h5>
+                            <ul><li>Lacks direct FastAPI experience, despite having Django background, which may require additional learning.</li><li>Total experience of 2.17 years is below the requested 5 years, indicating a significant experience gap.</li><li>Lacks SQL experience outside of PostgreSQL, which may be a concern given the requirement for SQL skills.</li></ul>
+                        </div>
+                    </div>
+                    
+                    
+            <div class="card-flags">
+                <h4>Recruiter Flags / Concerns</h4>
+                <ul><li>Job Hopper: average tenure is 0.43 years across 5 jobs, indicating instability and potential difficulty in long-term commitment.</li><li>Underqualification Risk: Candidate is at mid-level but role requires Senior, which may impact ability to lead or mentor junior team members.</li></ul>
+            </div>
+            
+                </div>
+            </div>
+        </div>
+        
+        <div class="candidate-card">
+            <div class="card-header">
+                <div class="header-left">
+                    <span class="rank-badge">#6</span>
+                    <div>
+                        <h3>Sam TechMismatch (Domain Match, Tech Mismatch)</h3>
+                        <p class="progression">Senior Ledger Engineer</p>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="score-circle score-mid">64.42</div>
+                </div>
+            </div>
+            
+            <div class="card-grid">
+                <div class="grid-left">
+                    <div class="sub-scores-section">
+                        <h4>Fit Breakdown</h4>
+                        <div class="bar-container">
+                            <span class="bar-label">Semantic Match (66.41%)</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 66.41%;"></div></div>
+                        </div>
+                        <div class="bar-container">
+                            <span class="bar-label">Skills Match (15.0%)</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 15.0%;"></div></div>
+                        </div>
+                        <div class="bar-container">
+                            <span class="bar-label">Experience & Seniority (100.0%)</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 100.0%;"></div></div>
+                        </div>
+                        <div class="bar-container">
+                            <span class="bar-label">Trajectory & Stability (100.0%)</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 100.0%;"></div></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skills-section">
+                        <h4>Key Skills</h4>
+                        <div class="tags-container">
+                            <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">Oracle DB</span><span class="tag">Kubernetes</span><span class="tag">Azure</span><span class="tag">Microservices</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid-right">
+                    <div class="rationale-section">
+                        <h4>Recruiter Rationale</h4>
+                        <p class="rationale-text">"Sam TechMismatch scored relatively low due to a significant mismatch in required technical skills, despite having 6 years of experience as a Senior Backend Developer and a steady growth trajectory. They rank lower compared to other candidates due to lacking direct experience with Python, PostgreSQL, Django, FastAPI, and SQL."</p>
+                    </div>
+                    
+                    <div class="bullet-grid">
+                        <div class="bullets-strengths">
+                            <h5>Key Strengths</h5>
+                            <ul><li>Demonstrated leadership in backend architecture for high-security distributed ledger systems using Java and Spring Boot at StateBank Fintech.</li><li>Handled transaction consistency over Oracle DB, showcasing expertise in distributed database management.</li><li>Utilized Kubernetes, indicating experience with containerization and orchestration.</li></ul>
+                        </div>
+                        <div class="bullets-gaps">
+                            <h5>Gaps & Risks</h5>
+                            <ul><li>Lacks direct experience with Python, a primary requirement for the role.</li><li>No experience with Django or FastAPI, which are crucial for the position.</li><li>Although experienced with Oracle DB, lacks direct experience with PostgreSQL.</li></ul>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="candidate-card">
+            <div class="card-header">
+                <div class="header-left">
+                    <span class="rank-badge">#7</span>
+                    <div>
+                        <h3>Jamie Transferable (Partial Fit - Transferable Skills)</h3>
+                        <p class="progression">Backend Engineer</p>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="score-circle score-mid">59.99</div>
+                </div>
+            </div>
+            
+            <div class="card-grid">
+                <div class="grid-left">
+                    <div class="sub-scores-section">
+                        <h4>Fit Breakdown</h4>
+                        <div class="bar-container">
+                            <span class="bar-label">Semantic Match (61.31%)</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 61.31%;"></div></div>
+                        </div>
+                        <div class="bar-container">
+                            <span class="bar-label">Skills Match (22.0%)</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 22.0%;"></div></div>
+                        </div>
+                        <div class="bar-container">
+                            <span class="bar-label">Experience & Seniority (75.0%)</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 75.0%;"></div></div>
+                        </div>
+                        <div class="bar-container">
+                            <span class="bar-label">Trajectory & Stability (100.0%)</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 100.0%;"></div></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skills-section">
+                        <h4>Key Skills</h4>
+                        <div class="tags-container">
+                            <span class="tag">JavaScript</span><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">MongoDB</span><span class="tag">MySQL</span><span class="tag">Docker</span><span class="tag">Redis</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid-right">
+                    <div class="rationale-section">
+                        <h4>Recruiter Rationale</h4>
+                        <p class="rationale-text">"Jamie Transferable scored 61.31 due to a strong experience score of 75.0 and a perfect trajectory score of 100.0, but was held back by a low skills score of 22.0, primarily due to lacking direct experience with required skills like Python, Django, and FastAPI. The candidate stands as a partial fit, requiring significant upskilling to meet the Senior Backend Engineer role's requirements."</p>
+                    </div>
+                    
+                    <div class="bullet-grid">
+                        <div class="bullets-strengths">
+                            <h5>Key Strengths</h5>
+                            <ul><li>Demonstrated Docker capability by implementing it for localized workflows at SaaS Billing Inc.</li><li>Showcased expertise in designing transactional APIs using Node.js/Express, which could be transferable to learning FastAPI.</li><li>Managed database consistency using MySQL, which shares some similarities with PostgreSQL and could be a transferable skill.</li><li>Achieved 5.5 years of tenure as a Backend Engineer, indicating stability and potential for growth.</li></ul>
+                        </div>
+                        <div class="bullets-gaps">
+                            <h5>Gaps & Risks</h5>
+                            <ul><li>Lacks direct experience with Python, a must-have skill for the role.</li><li>Has no experience with Django or FastAPI, which are critical requirements for the position.</li><li>Total experience, although meeting the minimum years, is not complemented by the required technical skills, posing an underqualification risk.</li></ul>
+                        </div>
+                    </div>
+                    
+                    
+            <div class="card-flags">
+                <h4>Recruiter Flags / Concerns</h4>
+                <ul><li>Underqualification Risk: Candidate is at mid level but role requires Senior, as indicated by the calculated score alerts.</li></ul>
+            </div>
+            
+                </div>
+            </div>
+        </div>
+        
+        <div class="candidate-card">
+            <div class="card-header">
+                <div class="header-left">
+                    <span class="rank-badge">#8</span>
+                    <div>
+                        <h3>Casey Weak (Weak Fit)</h3>
+                        <p class="progression">C++ Engineer</p>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="score-circle score-low">49.11</div>
+                </div>
+            </div>
+            
+            <div class="card-grid">
+                <div class="grid-left">
+                    <div class="sub-scores-section">
+                        <h4>Fit Breakdown</h4>
+                        <div class="bar-container">
+                            <span class="bar-label">Semantic Match (35.03%)</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 35.03%;"></div></div>
+                        </div>
+                        <div class="bar-container">
+                            <span class="bar-label">Skills Match (12.0%)</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 12.0%;"></div></div>
+                        </div>
+                        <div class="bar-container">
+                            <span class="bar-label">Experience & Seniority (75.0%)</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 75.0%;"></div></div>
+                        </div>
+                        <div class="bar-container">
+                            <span class="bar-label">Trajectory & Stability (100.0%)</span>
+                            <div class="bar-outer"><div class="bar-inner" style="width: 100.0%;"></div></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skills-section">
+                        <h4>Key Skills</h4>
+                        <div class="tags-container">
+                            <span class="tag">C++</span><span class="tag">Java</span><span class="tag">Qt</span><span class="tag">Swing</span><span class="tag">SQLite</span><span class="tag">Multi-threading</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid-right">
+                    <div class="rationale-section">
+                        <h4>Recruiter Rationale</h4>
+                        <p class="rationale-text">"Casey Weak scored low due to a significant mismatch between their skillset and the job description requirements, despite having a steady promotion growth trajectory and 7.83 years of experience. They rank poorly relative to the Senior Backend Engineer role requirements."</p>
+                    </div>
+                    
+                    <div class="bullet-grid">
+                        <div class="bullets-strengths">
+                            <h5>Key Strengths</h5>
+                            <ul><li>Demonstrated long-term commitment with 7.83 years of tenure at DesktopSoft, indicating stability and potential for growth.</li><li>Utilized SQLite for local database interactions, showing some transferable skills in database management, although not directly applicable to PostgreSQL or the required backend skills.</li></ul>
+                        </div>
+                        <div class="bullets-gaps">
+                            <h5>Gaps & Risks</h5>
+                            <ul><li>Lacks all must-have skills for the role, including Python, PostgreSQL, Django, FastAPI, and SQL, indicating a significant gap in required technical expertise.</li><li>Total experience, although meeting the minimum years, is not aligned with the seniority level due to the lack of relevant backend experience.</li><li>No experience with Docker or AWS, which are nice-to-have skills for the position.</li></ul>
+                        </div>
+                    </div>
+                    
+                    
+            <div class="card-flags">
+                <h4>Recruiter Flags / Concerns</h4>
+                <ul><li>Underqualification Risk: Candidate's skills and experience do not align with the Senior Backend Engineer role, posing a risk for underperformance.</li></ul>
+            </div>
+            
+                </div>
+            </div>
+        </div>
+        
+            </main>
+        </div>
+    </body>
+    </html>
+    
