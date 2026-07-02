@@ -10,7 +10,112 @@ from src.candidate_profile import parse_raw_resume_text, synthesize_candidate_pr
 from src.scorer import score_candidate
 from src.explainability import generate_candidate_rationale
 
+def generate_excel_report(ranked_list):
+    import io
+    from openpyxl.styles import Font, Alignment, PatternFill, Border, Side
+    
+    # Create list of dicts
+    data = []
+    for rank, cand in enumerate(ranked_list):
+        sub = cand.get("sub_scores", {})
+        rat = cand.get("rationale", {})
+        snap = cand.get("candidate_profile_snapshot", {})
+        
+        # Format strengths and gaps
+        strengths = "\n".join([f"• {s}" for s in rat.get("strengths", [])])
+        gaps = "\n".join([f"• {g}" for g in rat.get("gaps_and_risks", [])])
+        flags = "\n".join([f"• {f}" for f in rat.get("concerns_flags", [])]) if rat.get("concerns_flags") else "None"
+        
+        # Experience timeline summary
+        exp_list = snap.get("experience", [])
+        if exp_list:
+            exp_summary = " -> ".join([job.get("title", "Unknown") for job in reversed(exp_list)])
+        else:
+            exp_summary = "No work history listed"
+            
+        # Inferred skills
+        inferred_skills = ", ".join(snap.get("inferred_skills", [])) if snap.get("inferred_skills") else "None"
+        
+        data.append({
+            "Rank": rank + 1,
+            "Candidate Name": cand.get("name", "Unknown"),
+            "Overall Match Score (%)": cand.get("overall_score", 0),
+            "Semantic Alignment Score (%)": sub.get("semantic_score", 0),
+            "Hard Skills Overlap (%)": sub.get("skills_score", 0),
+            "Experience Fit (%)": sub.get("experience_score", 0),
+            "Trajectory & Stability (%)": sub.get("trajectory_score", 0),
+            "Executive Summary": rat.get("overall_rank_summary", "N/A"),
+            "Grounded Strengths": strengths,
+            "Gaps & Risks": gaps,
+            "Recruiter Alerts / Flags": flags,
+            "Experience Timeline": exp_summary,
+            "Total Tenure (Years)": snap.get("overall_tenure_years", 0.0),
+            "Avg Job Stay (Years)": snap.get("avg_tenure_years", 0.0),
+            "Career Progression": snap.get("growth_trajectory", "stable"),
+            "Inferred Skills": inferred_skills
+        })
+        
+    df = pd.DataFrame(data)
+    
+    # Write to Excel Bytes buffer
+    buffer = io.BytesIO()
+    with pd.ExcelWriter(buffer, engine='openpyxl') as writer:
+        df.to_excel(writer, index=False, sheet_name="Candidate Rankings")
+        
+        workbook = writer.book
+        worksheet = writer.sheets["Candidate Rankings"]
+        
+        # Header formatting
+        header_font = Font(name="Segoe UI", size=11, bold=True, color="FFFFFF")
+        header_fill = PatternFill(start_color="1F2937", end_color="1F2937", fill_type="solid") # Sleek charcoal gray header
+        header_alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
+        
+        for col_idx in range(1, len(df.columns) + 1):
+            cell = worksheet.cell(row=1, column=col_idx)
+            cell.font = header_font
+            cell.fill = header_fill
+            cell.alignment = header_alignment
+            
+        # Cell borders and alignment
+        thin_border = Border(
+            left=Side(style='thin', color='E5E7EB'),
+            right=Side(style='thin', color='E5E7EB'),
+            top=Side(style='thin', color='E5E7EB'),
+            bottom=Side(style='thin', color='E5E7EB')
+        )
+        
+        cell_font = Font(name="Segoe UI", size=10)
+        
+        for row in range(2, len(data) + 2):
+            for col in range(1, len(df.columns) + 1):
+                cell = worksheet.cell(row=row, column=col)
+                cell.font = cell_font
+                cell.border = thin_border
+                
+                # Align scores & rank to center, others to left
+                if col in [1, 3, 4, 5, 6, 7, 13, 14]:
+                    cell.alignment = Alignment(horizontal="center", vertical="top")
+                else:
+                    cell.alignment = Alignment(horizontal="left", vertical="top", wrap_text=True)
+                    
+        # Set dynamic column widths with a max constraint
+        for col in worksheet.columns:
+            max_len = 0
+            col_letter = col[0].column_letter
+            for cell in col:
+                val = str(cell.value or '')
+                # Split by newline to check line length for wrapped text
+                lines = val.split('\n')
+                longest_line = max(len(l) for l in lines) if lines else 0
+                max_len = max(max_len, longest_line)
+            # Add padding and limit to max 50 width, min 10
+            worksheet.column_dimensions[col_letter].width = min(max(max_len + 3, 10), 50)
+            
+    buffer.seek(0)
+    return buffer
+
 # Page Configuration for premium branding
+
 st.set_page_config(
     page_title="DeepMatch - AI Candidate Shortlist Portal",
     page_icon="🎯",
@@ -237,7 +342,18 @@ with col_jd:
     st.write(jd["summary"])
 
 with col_cands:
-    st.markdown("### 👥 Evaluated Candidates Shortlist")
+    col_cands_title, col_download = st.columns([1.8, 1])
+    with col_cands_title:
+        st.markdown("### 👥 Evaluated Candidates Shortlist")
+    with col_download:
+        excel_data = generate_excel_report(ranked_list)
+        st.download_button(
+            label="📥 Download Excel Report",
+            data=excel_data,
+            file_name=f"DeepMatch_Report_{jd.get('role_title', 'Shortlist').replace(' ', '_')}.xlsx",
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            use_container_width=True
+        )
     
     for rank, cand in enumerate(ranked_list):
         sub = cand["sub_scores"]
